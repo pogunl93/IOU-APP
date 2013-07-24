@@ -13,5 +13,5 @@ require 'sinatra/base'
 require 'rack-flash'
 
 get '/' do 
-	"Hello World"
+	haml :home
 end 
