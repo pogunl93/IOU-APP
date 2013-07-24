@@ -11,6 +11,7 @@ require 'carrierwave/orm/activerecord'
 require 'bundler/setup'
 require 'sinatra/base'
 require 'rack-flash'
+require './models'
 
 get '/' do 
 	haml :home

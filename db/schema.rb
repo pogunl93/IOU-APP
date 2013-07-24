@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130723233710) do
+ActiveRecord::Schema.define(version: 20130723235825) do
+
+  create_table "ious", force: true do |t|
+    t.integer "owner_id"
+    t.integer "debtor_id"
+    t.integer "amount"
+    t.integer "due_date"
+  end
 
   create_table "users", force: true do |t|
     t.string "fname"
