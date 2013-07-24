@@ -14,8 +14,41 @@
   %meta{:content => "", :name => "author"}
   %meta{:name => "viewport", :content => "width=device-width; initial-scale=1.0; maximum-scale=1.0;"}
 
-  %script{:src => "./js/modernizr.min.js"}
+  %script{:src => "/js/modernizr.min.js"}
+  %script{:src => "http://code.jquery.com/jquery-1.10.2.min.js"}
+  %script{:src => "/js/bootstrap.min.js"}
+
+  %link{:href => "/css/style.css", :type => "text/css", :rel => "stylesheet"}
+  %link{:href => "/css/bootstrap.min.css", :type => "text/css", :rel => "stylesheet"}
+  %link{:href => "/css/bootstrap-responsive.min.css", :type => "text/css", :rel => "stylesheet"}
 
 %body
   .container
+    .navbar
+      .navbar-inner
+        %a.brand{href: "#"}
+          IOU APP
+        %ul.nav
+          %li
+            %a{:href => "#"}
+              Profile
+          %li.dropdown
+            %a.dropdown-toggle{:'data-toggle' => "dropdown", :href => "#"}
+              Your Money
+              %b.caret
+            %ul.dropdown-menu{:'aria-labelledby' => "dLabel", :role => "menu"}
+              %li
+                %a.menu-item Lending Contracts
+              %li
+                %a.menu-item Borrow Contracts
+              %li.divider
+              %li
+                %a.menu-item Due Contracts
+          %li
+            %a{:href => "#"} New Contract
+        %ul.nav.pull-right
+          %li
+            %a Log In
+          %li
+            %a Sign Up
     = yield
