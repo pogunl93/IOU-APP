@@ -26,14 +26,14 @@
   .container
     .navbar
       .navbar-inner
-        %a.brand{href: "#"}
+        %a.brand{href: "/"}
           IOU APP
         %ul.nav
           %li
             %a{:href => "#"}
               Profile
           %li.dropdown
-            %a.dropdown-toggle{:'data-toggle' => "dropdown", :href => "#"}
+            %a.dropdown-toggle{:'data-toggle' => "dropdown", :href => "#{}"}
               Your Money
               %b.caret
             %ul.dropdown-menu{:'aria-labelledby' => "dLabel", :role => "menu"}
@@ -47,8 +47,14 @@
           %li
             %a{:href => "#"} New Contract
         %ul.nav.pull-right
-          %li
-            %a Log In
-          %li
-            %a Sign Up
+          -if current_user.nil?
+            %li
+              %a{:href => "/sign_in"} Log In
+            %li
+              %a{:href => "/sign_up"} Sign Up
+          -else 
+            %li
+              %a{:href => "/sign_out"} Sign Out
+      -if !flash[:notice].nil?
+        .alert=flash[:notice]   
     = yield

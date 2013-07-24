@@ -1,0 +1,20 @@
+%h2 Sign up For IOU
+
+%form{:method => "post", :action => "sign_up"}
+	%label{:name => "fname"} First Name 
+	%input{:type => "text", :name => "fname"}
+
+	%label{:name => "lname"} Last Name 
+	%input{:type => "text", :name => "lname"}
+
+	%label{:name => "email"} Email 
+	%input{:type => "text", :name => "email"}
+
+	%label{:name => "password"} Password
+	%input{:type => "password", :name => "password"}
+
+	%label{:name => "confirm_password"} Confirm Password
+	%input{:type => "password", :name => "confirm_password"}
+
+	%br
+	%input{:type => "submit", :class => "btn"}
