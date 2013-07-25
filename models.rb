@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 	
+	def full_name 
+		fname+ " " +lname
+	end 
 
 	has_many :debits_as_user, :foreign_key => :debtor_id, :class_name => "Iou"
 	has_many :debits, :through => :debits_as_user

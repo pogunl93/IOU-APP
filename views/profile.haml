@@ -1,28 +1,18 @@
-.profile
-  %h2
-    Alex Luce
+%h2 Hello, #{@user.fname}
+%h3 You owe:
 
-  %h3.page-header Owed
+-@iou_owe.each do |i|
+	You owe
+	%strong=i.creditor.full_name 
+	%strong=i.amount 
+	dollars
+	%br
 
-  %ul
-    %li.iou
-      %h4 John Doe
-      %span.badge.badge-success $12.00
-      %strong.label.label-important Due 12/4/13
-      %a.btn{href: "#"} Details
+%h3 And you are owed: 
 
-  %ul
-    %li.iou
-      %h4 Jane Brown
-      %span.badge.badge-success $12.00
-      %strong.label.label-important Due 12/4/13
-      %a.btn{href: "#"} Details
-
-  %ul
-    %li.iou
-      %h4 Sean Green
-      %span.badge.badge-success $12.00
-      %strong.label.label-important Due 12/4/13
-      %a.btn{href: "#"} Details
-
-  %h3.page-header Owing
+-@iou_owed.each do |p|
+	%strong=p.debitor.full_name
+	owes you 
+	%strong=p.amount
+	dollars
+	%br
