@@ -1,18 +1,34 @@
-%h2 Hello, #{@user.fname}
-%h3 You owe:
+%h2.page-header Hello, #{@user.fname}
+%h4 You owe:
 
 -@iou_owe.each do |i|
-	You owe
-	%strong=i.creditor.full_name 
-	%strong=i.amount 
-	dollars
-	%br
+  .iou
+    %a.btn.btn-small.btn.btn-inverse{:href => "/profile/#{i.creditor.id.to_s}"}=i.creditor.full_name
+    is owed
+    %strong.badge.badge-important
+      $
+      =i.amount
+    %br
 
-%h3 And you are owed: 
+%h6
+  Total:
+  .badge.badge-important
+    $
+    =totals(@iou_owe)
+
+%h4 And you are owed:
 
 -@iou_owed.each do |p|
-	%strong=p.debitor.full_name
-	owes you 
-	%strong=p.amount
-	dollars
-	%br
+  .iou
+    %a.btn.btn-small.btn.btn-inverse{:href => "/profile/#{p.debitor.id.to_s}"}=p.debitor.full_name
+    owes you
+    %strong.badge.badge-success
+      $
+      =p.amount
+    %br
+
+%h6
+  Total:
+  .badge.badge-success
+    $
+    =totals(@iou_owed)
