@@ -1,0 +1,13 @@
+%h2 Enter new Contract
+
+%form{:action => "/new_iou", :method => "post"}
+	%label{:name => "debtor_email"} Debtor Email
+	%input{:name => "debtor_email", :type => "text"}
+
+	%label{:name => "amount_owed"} Amount Owed ($)
+	%input{:name => "amount_owed", :type => "text"}
+
+	%label{:name => "date_due"} Date Due
+	%input{:name => "date_due", :type => "date"}
+	%br
+	%input{:type => "submit", :class => "btn"}

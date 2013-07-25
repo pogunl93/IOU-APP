@@ -61,3 +61,29 @@ get '/sign_out' do
 	session[:user_id] = nil
 	redirect '/'
 end 
+
+get '/new_iou' do
+	haml :new_iou
+end 
+
+post '/new_iou' do
+	@user = User.where(:email => params[:debtor_email]).first
+	if @user 
+		Iou.create(:owner_id => current_user.id, :debtor_id => @user.id, :amount => params[:amount_owed], :due_date => params[:date_due])
+	else 
+		flash[:notice] = "This user does not exist"
+		redirect '/new_iou'
+	end
+	redirect '/'
+end
+
+get '/profile/:id' do 
+	@user = User.find(params[:id])
+	@iou_owe = Iou.where(:debtor_id => params[:id].to_i)
+	@iou_owed = Iou.where(:owner_id => params[:id].to_i)
+	if !current_user.nil?
+		haml :profile 
+	else 
+		haml :sign_in
+	end 
+end

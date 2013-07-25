@@ -29,9 +29,10 @@
         %a.brand{href: "/"}
           IOU APP
         %ul.nav
-          %li
-            %a{:href => "#"}
-              Profile
+          -if !current_user.nil?
+            %li
+              %a{:href => "/profile/#{current_user.id.to_s}"}
+                Profile
           %li.dropdown
             %a.dropdown-toggle{:'data-toggle' => "dropdown", :href => "#{}"}
               Your Money
@@ -44,8 +45,9 @@
               %li.divider
               %li
                 %a.menu-item Due Contracts
-          %li
-            %a{:href => "#"} New Contract
+          -if !current_user.nil?
+            %li
+              %a{:href => "/new_iou"} New Contract
         %ul.nav.pull-right
           -if current_user.nil?
             %li

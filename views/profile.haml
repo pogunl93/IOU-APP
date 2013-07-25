@@ -1,0 +1,18 @@
+%h2 Hello, #{@user.fname}
+%h3 You owe:
+
+-@iou_owe.each do |i|
+	You owe
+	%strong=i.creditor.full_name 
+	%strong=i.amount 
+	dollars
+	%br
+
+%h3 And you are owed: 
+
+-@iou_owed.each do |p|
+	%strong=p.debitor.full_name
+	owes you 
+	%strong=p.amount
+	dollars
+	%br
