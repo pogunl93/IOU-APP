@@ -2,3 +2,20 @@
 {
   margin-top: 15px;
 }
+
+.profile li.iou
+{
+  background-color: #EEE;
+  padding: 10px;
+  padding-top: 3px;
+  list-style-type: none;
+}
+
+.profile li.iou span .fjdskl
+{
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: lightgreen;
+  padding: 5px;
+}

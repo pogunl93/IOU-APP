@@ -23,6 +23,10 @@ get '/' do
 	haml :home
 end 
 
+get '/profile' do
+	haml :profile
+end
+
 get '/sign_up' do
 	haml :sign_up
 end 
