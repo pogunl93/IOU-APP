@@ -12,7 +12,7 @@ require './models'
 require './helpers'
 require 'bcrypt'
 require 'pony'
-#require 'mandrill'
+require 'mandrill'
 
 enable :sessions 
 use Rack::Flash, :sweep => true 
