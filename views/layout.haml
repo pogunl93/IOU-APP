@@ -34,17 +34,9 @@
               %a{:href => "/profile/#{current_user.id.to_s}"}
                 Profile
           %li.dropdown
-            %a.dropdown-toggle{:'data-toggle' => "dropdown", :href => "#{}"}
-              Your Money
-              %b.caret
-            %ul.dropdown-menu{:'aria-labelledby' => "dLabel", :role => "menu"}
-              %li
-                %a.menu-item Lending Contracts
-              %li
-                %a.menu-item Borrow Contracts
-              %li.divider
-              %li
-                %a.menu-item Due Contracts
+            -if !current_user.nil?
+              %a{:href => "/your_money/#{current_user.id.to_s}"}
+                Your Money
           -if !current_user.nil?
             %li
               %a{:href => "/new_iou"} New Contract

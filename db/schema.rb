@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130724005819) do
+ActiveRecord::Schema.define(version: 20130726011445) do
 
   create_table "ious", force: true do |t|
     t.integer "owner_id"
@@ -23,7 +23,8 @@ ActiveRecord::Schema.define(version: 20130724005819) do
     t.string "fname"
     t.string "lname"
     t.string "email"
-    t.string "password"
+    t.string "password_hash"
+    t.string "password_salt"
   end
 
 end
