@@ -1,0 +1,36 @@
+%h2.page-header Hello, #{current_user.fname}
+
+%h3.page-header #{@user.fname}'s Profile
+%h4 They owe:
+
+-@iou_owe.each do |i|
+  .iou
+    %a.btn.btn-small.btn.btn-inverse{:href => "/profile/#{i.creditor.id.to_s}"}=i.creditor.full_name
+    is owed
+    %strong.badge.badge-important
+      $
+      =i.amount
+    %br
+
+%h6
+  Total:
+  .badge.badge-important
+    $
+    =totals(@iou_owe)
+
+%h4 And they are owed:
+
+-@iou_owed.each do |p|
+  .iou
+    %a.btn.btn-small.btn.btn-inverse{:href => "/profile/#{p.debitor.id.to_s}"}=p.debitor.full_name
+    owes them
+    %strong.badge.badge-success
+      $
+      =p.amount
+    %br
+
+%h6
+  Total:
+  .badge.badge-success
+    $
+    =totals(@iou_owed)

@@ -31,7 +31,7 @@
         %ul.nav
           -if !current_user.nil?
             %li
-              %a{:href => "/profile/#{current_user.id.to_s}"}
+              %a{:href => "/your_money/#{current_user.id.to_s}"}
                 Profile
           %li.dropdown
             -if !current_user.nil?

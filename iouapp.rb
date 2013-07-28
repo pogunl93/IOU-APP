@@ -55,12 +55,11 @@ get '/sign_in' do
 	haml :sign_in
 end 
 
-post '/sign_in' do 
-	@user = User.where(:email => params[:email].downcase).first
-	if @user 
-		if @user.password_hash == params[:password]
-			session[:user_id] = @user.id
-			flash[:notice] = "Welcome back, #{@user.fname}"
+post '/sign_in' do
+	if (@user = User.where(email: params[:email]))
+		if @user.authenticate(params[:email], params[:password])
+			session[:user_id] = @user.first.id
+			flash[:notice] = "Welcome back, #{@user.first.fname}"
 			redirect '/'
 		else 
 			flash[:notice] = "Your password was wrong, please try again"
@@ -91,6 +90,17 @@ post '/new_iou' do
 		redirect '/new_iou'
 	end
 	redirect '/'
+end
+
+get '/profile/:id' do
+	@user = User.find(params[:id])
+	if current_user == @user
+		redirect '/your_money/' + current_user.id.to_s
+	else
+		@iou_owe = Iou.where(:debtor_id => params[:id].to_i)
+		@iou_owed = Iou.where(:owner_id => params[:id].to_i)
+		haml :profile
+	end
 end
 
 get '/your_money/:id' do 
